@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Protótipo acadêmico inspirado no YouTube com layout e comportamento próximos da plataforma."
+  />
+  <title>YouTube Clone Acadêmico</title>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 64"><rect width="90" height="64" rx="18" fill="%23ff0000"/><path d="M37 20 37 44 57 32Z" fill="white"/></svg>' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-button" id="menuToggle" type="button" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a class="brand" href="#" aria-label="Página inicial">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 90 64" focusable="false">
+            <rect width="90" height="64" rx="18" fill="#ff0000"></rect>
+            <path d="M37 20 37 44 57 32Z" fill="#ffffff"></path>
+          </svg>
+        </span>
+        <span class="brand-text">YouTube</span>
+        <span class="brand-country">BR</span>
+      </a>
+    </div>
+
+    <form class="search-form" id="searchForm" role="search">
+      <label class="sr-only" for="searchInput">Pesquisar vídeos</label>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Pesquisar"
+        autocomplete="off"
+      />
+      <button class="search-submit" type="submit" aria-label="Pesquisar">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15.5 14h-.8l-.3-.3a6 6 0 1 0-.7.7l.3.3v.8L19 20.5 20.5 19l-5-5zm-5.5 0C7.2 14 5 11.8 5 9s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/>
+        </svg>
+      </button>
+    </form>
+
+    <div class="topbar-right">
+      <button class="circle-button" id="createButton" type="button" aria-label="Criar vídeo">+</button>
+      <button class="circle-button" id="notificationsButton" type="button" aria-label="Notificações">9+</button>
+      <button class="profile-badge" id="profileButton" type="button" aria-label="Perfil do usuário">JM</button>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <nav aria-label="Menu lateral">
+        <button class="sidebar-item active" type="button">Início</button>
+        <button class="sidebar-item" type="button">Shorts</button>
+        <button class="sidebar-item" type="button">Inscrições</button>
+        <hr />
+        <button class="sidebar-item" type="button">Você</button>
+        <button class="sidebar-item" type="button">Histórico</button>
+        <button class="sidebar-item" type="button">Seus vídeos</button>
+        <button class="sidebar-item" type="button">Assistir mais tarde</button>
+        <button class="sidebar-item" type="button">Curtidos</button>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="player-panel" id="playerPanel">
+        <div class="player-frame">
+          <iframe
+            id="videoFrame"
+            src="https://www.youtube.com/embed/f02mOEt11OQ"
+            title="Vídeo em destaque"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="player-info">
+          <h1 id="featuredTitle">Clone do YouTube com HTML, CSS e JavaScript</h1>
+          <p class="player-meta">
+            <span id="featuredViews">15 mil visualizações</span>
+            <span id="featuredPublishedAt">há 2 dias</span>
+            <span id="featuredCategory">Frontend</span>
+          </p>
+          <div class="channel-panel">
+            <div class="channel-avatar" id="featuredAvatar">DA</div>
+            <div>
+              <strong id="featuredChannel">Canal Dev Acadêmico</strong>
+              <p id="featuredDescription">
+                Interface principal inspirada no YouTube com layout responsivo e estrutura semântica.
+              </p>
+            </div>
+          </div>
+          <div class="player-actions">
+            <button class="action-button" id="likeButton" type="button">Curtir</button>
+            <button class="action-button" id="saveButton" type="button">Salvar</button>
+            <button class="action-button" id="shareButton" type="button">Compartilhar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="categories" aria-label="Categorias">
+        <button class="category selected" type="button" data-category="Todos" aria-selected="true">Tudo</button>
+        <button class="category" type="button" data-category="Frontend" aria-selected="false">Frontend</button>
+        <button class="category" type="button" data-category="Backend" aria-selected="false">Backend</button>
+        <button class="category" type="button" data-category="Banco de Dados" aria-selected="false">Banco de Dados</button>
+        <button class="category" type="button" data-category="Algoritmos" aria-selected="false">Algoritmos</button>
+        <button class="category" type="button" data-category="UI/UX" aria-selected="false">UI/UX</button>
+        <button class="category" type="button" data-category="Arquitetura" aria-selected="false">Arquitetura</button>
+      </section>
+
+      <section class="results-bar">
+        <p id="resultsCounter">0 resultados encontrados</p>
+        <p id="searchStatus">Sem filtro</p>
+      </section>
+
+      <section class="shorts-section">
+        <div class="section-title-row">
+          <h2>Shorts</h2>
+          <span>Conteúdo rápido</span>
+        </div>
+        <div class="shorts-row" id="shortsRow"></div>
+      </section>
+
+      <section class="videos-section">
+        <div class="section-title-row">
+          <h2>Recomendados</h2>
+          <span>Vídeos em destaque para a disciplina</span>
+        </div>
+        <section class="videos-grid" id="videosGrid" aria-live="polite"></section>
+      </section>
+
+      <section class="empty-state hidden" id="emptyState">
+        <h2>Nenhum vídeo encontrado</h2>
+        <p>Tente pesquisar por outro termo ou trocar a categoria.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
